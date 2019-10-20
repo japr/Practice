@@ -23,6 +23,9 @@
 		EE553058235CD623000FE5ED /* DatabaseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553057235CD623000FE5ED /* DatabaseEntity.swift */; };
 		EE55305B235CD651000FE5ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE55305A235CD651000FE5ED /* CoreData.framework */; };
 		EE553067235CDF6F000FE5ED /* CachedMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553066235CDF6F000FE5ED /* CachedMovies.swift */; };
+		EE55306A235CEA0E000FE5ED /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553069235CEA0E000FE5ED /* MovieCollectionViewCell.swift */; };
+		EE55306C235CEB11000FE5ED /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55306B235CEB11000FE5ED /* Connection.swift */; };
+		EE55306F235CEDDD000FE5ED /* CollectionViewCell+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55306E235CEDDD000FE5ED /* CollectionViewCell+Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,9 @@
 		EE553057235CD623000FE5ED /* DatabaseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseEntity.swift; sourceTree = "<group>"; };
 		EE55305A235CD651000FE5ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		EE553066235CDF6F000FE5ED /* CachedMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedMovies.swift; sourceTree = "<group>"; };
+		EE553069235CEA0E000FE5ED /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		EE55306B235CEB11000FE5ED /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		EE55306E235CEDDD000FE5ED /* CollectionViewCell+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionViewCell+Additions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				EE553006235CB641000FE5ED /* AppDelegate.swift */,
+				EE55306D235CEDCB000FE5ED /* Utils */,
 				EE553039235CC2B6000FE5ED /* Database */,
 				EE55303A235CC2B6000FE5ED /* Models */,
 				EE55303B235CC2B6000FE5ED /* Modules */,
@@ -204,6 +211,7 @@
 		EE55303F235CC2B6000FE5ED /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EE553068235CE9FF000FE5ED /* Cells */,
 				EE553043235CC2E3000FE5ED /* MainViewController.swift */,
 			);
 			path = View;
@@ -213,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				EE553051235CCBF2000FE5ED /* API.swift */,
+				EE55306B235CEB11000FE5ED /* Connection.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -223,6 +232,22 @@
 				EE55305A235CD651000FE5ED /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE553068235CE9FF000FE5ED /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EE553069235CEA0E000FE5ED /* MovieCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EE55306D235CEDCB000FE5ED /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EE55306E235CEDDD000FE5ED /* CollectionViewCell+Additions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,7 +388,10 @@
 				EE553067235CDF6F000FE5ED /* CachedMovies.swift in Sources */,
 				EE553058235CD623000FE5ED /* DatabaseEntity.swift in Sources */,
 				EE553042235CC2C8000FE5ED /* Practice.xcdatamodeld in Sources */,
+				EE55306C235CEB11000FE5ED /* Connection.swift in Sources */,
 				EE553052235CCBF2000FE5ED /* API.swift in Sources */,
+				EE55306F235CEDDD000FE5ED /* CollectionViewCell+Additions.swift in Sources */,
+				EE55306A235CEA0E000FE5ED /* MovieCollectionViewCell.swift in Sources */,
 				EE553056235CD5BA000FE5ED /* Database.swift in Sources */,
 				EE553044235CC2E3000FE5ED /* MainViewController.swift in Sources */,
 			);

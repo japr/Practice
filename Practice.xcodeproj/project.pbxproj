@@ -26,6 +26,8 @@
 		EE55306A235CEA0E000FE5ED /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553069235CEA0E000FE5ED /* MovieCollectionViewCell.swift */; };
 		EE55306C235CEB11000FE5ED /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55306B235CEB11000FE5ED /* Connection.swift */; };
 		EE55306F235CEDDD000FE5ED /* CollectionViewCell+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55306E235CEDDD000FE5ED /* CollectionViewCell+Additions.swift */; };
+		EE553071235CF7B6000FE5ED /* UIStoryboard+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553070235CF7B6000FE5ED /* UIStoryboard+Additions.swift */; };
+		EE553073235CF7FD000FE5ED /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553072235CF7FD000FE5ED /* UIViewController+Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		EE553069235CEA0E000FE5ED /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE55306B235CEB11000FE5ED /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EE55306E235CEDDD000FE5ED /* CollectionViewCell+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionViewCell+Additions.swift"; sourceTree = "<group>"; };
+		EE553070235CF7B6000FE5ED /* UIStoryboard+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Additions.swift"; sourceTree = "<group>"; };
+		EE553072235CF7FD000FE5ED /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				EE55306E235CEDDD000FE5ED /* CollectionViewCell+Additions.swift */,
+				EE553070235CF7B6000FE5ED /* UIStoryboard+Additions.swift */,
+				EE553072235CF7FD000FE5ED /* UIViewController+Additions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -383,11 +389,13 @@
 			files = (
 				EE553054235CCE2E000FE5ED /* Movie.swift in Sources */,
 				EE553046235CC2F4000FE5ED /* MainWireframe.swift in Sources */,
+				EE553071235CF7B6000FE5ED /* UIStoryboard+Additions.swift in Sources */,
 				EE553048235CC2FD000FE5ED /* MainPresenter.swift in Sources */,
 				EE553007235CB641000FE5ED /* AppDelegate.swift in Sources */,
 				EE553067235CDF6F000FE5ED /* CachedMovies.swift in Sources */,
 				EE553058235CD623000FE5ED /* DatabaseEntity.swift in Sources */,
 				EE553042235CC2C8000FE5ED /* Practice.xcdatamodeld in Sources */,
+				EE553073235CF7FD000FE5ED /* UIViewController+Additions.swift in Sources */,
 				EE55306C235CEB11000FE5ED /* Connection.swift in Sources */,
 				EE553052235CCBF2000FE5ED /* API.swift in Sources */,
 				EE55306F235CEDDD000FE5ED /* CollectionViewCell+Additions.swift in Sources */,

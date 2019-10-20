@@ -8,14 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		EE553007235CB641000FE5ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553006235CB641000FE5ED /* AppDelegate.swift */; };
-		EE553009235CB641000FE5ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553008235CB641000FE5ED /* SceneDelegate.swift */; };
-		EE55300B235CB641000FE5ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55300A235CB641000FE5ED /* ViewController.swift */; };
-		EE55300E235CB641000FE5ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE55300C235CB641000FE5ED /* Main.storyboard */; };
-		EE553011235CB641000FE5ED /* Practice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE55300F235CB641000FE5ED /* Practice.xcdatamodeld */; };
 		EE553013235CB643000FE5ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE553012235CB643000FE5ED /* Assets.xcassets */; };
-		EE553016235CB643000FE5ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE553014235CB643000FE5ED /* LaunchScreen.storyboard */; };
 		EE553021235CB643000FE5ED /* PracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553020235CB643000FE5ED /* PracticeTests.swift */; };
 		EE55302C235CB643000FE5ED /* PracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55302B235CB643000FE5ED /* PracticeUITests.swift */; };
+		EE553042235CC2C8000FE5ED /* Practice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EE553040235CC2C8000FE5ED /* Practice.xcdatamodeld */; };
+		EE553044235CC2E3000FE5ED /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553043235CC2E3000FE5ED /* MainViewController.swift */; };
+		EE553046235CC2F4000FE5ED /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553045235CC2F4000FE5ED /* MainWireframe.swift */; };
+		EE553048235CC2FD000FE5ED /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553047235CC2FD000FE5ED /* MainPresenter.swift */; };
+		EE55304E235CC773000FE5ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE55304D235CC773000FE5ED /* Main.storyboard */; };
+		EE553050235CC780000FE5ED /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE55304F235CC780000FE5ED /* Launch Screen.storyboard */; };
+		EE553052235CCBF2000FE5ED /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553051235CCBF2000FE5ED /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,12 +40,7 @@
 /* Begin PBXFileReference section */
 		EE553003235CB641000FE5ED /* Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE553006235CB641000FE5ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EE553008235CB641000FE5ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EE55300A235CB641000FE5ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EE55300D235CB641000FE5ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EE553010235CB641000FE5ED /* Practice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Practice.xcdatamodel; sourceTree = "<group>"; };
 		EE553012235CB643000FE5ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EE553015235CB643000FE5ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE553017235CB643000FE5ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE55301C235CB643000FE5ED /* PracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE553020235CB643000FE5ED /* PracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeTests.swift; sourceTree = "<group>"; };
@@ -51,6 +48,13 @@
 		EE553027235CB643000FE5ED /* PracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE55302B235CB643000FE5ED /* PracticeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeUITests.swift; sourceTree = "<group>"; };
 		EE55302D235CB643000FE5ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE553041235CC2C8000FE5ED /* Practice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Practice.xcdatamodel; sourceTree = "<group>"; };
+		EE553043235CC2E3000FE5ED /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		EE553045235CC2F4000FE5ED /* MainWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWireframe.swift; sourceTree = "<group>"; };
+		EE553047235CC2FD000FE5ED /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		EE55304D235CC773000FE5ED /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		EE55304F235CC780000FE5ED /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		EE553051235CCBF2000FE5ED /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +105,14 @@
 		EE553005235CB641000FE5ED /* Practice */ = {
 			isa = PBXGroup;
 			children = (
+				EE553039235CC2B6000FE5ED /* Database */,
+				EE55303A235CC2B6000FE5ED /* Models */,
+				EE55303B235CC2B6000FE5ED /* Modules */,
 				EE553006235CB641000FE5ED /* AppDelegate.swift */,
-				EE553008235CB641000FE5ED /* SceneDelegate.swift */,
-				EE55300A235CB641000FE5ED /* ViewController.swift */,
-				EE55300C235CB641000FE5ED /* Main.storyboard */,
+				EE553049235CC70C000FE5ED /* Networking */,
 				EE553012235CB643000FE5ED /* Assets.xcassets */,
-				EE553014235CB643000FE5ED /* LaunchScreen.storyboard */,
 				EE553017235CB643000FE5ED /* Info.plist */,
-				EE55300F235CB641000FE5ED /* Practice.xcdatamodeld */,
+				EE55304F235CC780000FE5ED /* Launch Screen.storyboard */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -129,6 +133,72 @@
 				EE55302D235CB643000FE5ED /* Info.plist */,
 			);
 			path = PracticeUITests;
+			sourceTree = "<group>";
+		};
+		EE553039235CC2B6000FE5ED /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				EE553040235CC2C8000FE5ED /* Practice.xcdatamodeld */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		EE55303A235CC2B6000FE5ED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EE55303B235CC2B6000FE5ED /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				EE55303C235CC2B6000FE5ED /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		EE55303C235CC2B6000FE5ED /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EE55303D235CC2B6000FE5ED /* Presenter */,
+				EE55303E235CC2B6000FE5ED /* Wireframe */,
+				EE55303F235CC2B6000FE5ED /* View */,
+				EE55304D235CC773000FE5ED /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EE55303D235CC2B6000FE5ED /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				EE553047235CC2FD000FE5ED /* MainPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		EE55303E235CC2B6000FE5ED /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				EE553045235CC2F4000FE5ED /* MainWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		EE55303F235CC2B6000FE5ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EE553043235CC2E3000FE5ED /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EE553049235CC70C000FE5ED /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EE553051235CCBF2000FE5ED /* API.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,9 +305,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE553016235CB643000FE5ED /* LaunchScreen.storyboard in Resources */,
+				EE55304E235CC773000FE5ED /* Main.storyboard in Resources */,
+				EE553050235CC780000FE5ED /* Launch Screen.storyboard in Resources */,
 				EE553013235CB643000FE5ED /* Assets.xcassets in Resources */,
-				EE55300E235CB641000FE5ED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,10 +332,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE553011235CB641000FE5ED /* Practice.xcdatamodeld in Sources */,
-				EE55300B235CB641000FE5ED /* ViewController.swift in Sources */,
+				EE553046235CC2F4000FE5ED /* MainWireframe.swift in Sources */,
+				EE553048235CC2FD000FE5ED /* MainPresenter.swift in Sources */,
 				EE553007235CB641000FE5ED /* AppDelegate.swift in Sources */,
-				EE553009235CB641000FE5ED /* SceneDelegate.swift in Sources */,
+				EE553042235CC2C8000FE5ED /* Practice.xcdatamodeld in Sources */,
+				EE553052235CCBF2000FE5ED /* API.swift in Sources */,
+				EE553044235CC2E3000FE5ED /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,25 +371,6 @@
 			targetProxy = EE553028235CB643000FE5ED /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		EE55300C235CB641000FE5ED /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EE55300D235CB641000FE5ED /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EE553014235CB643000FE5ED /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EE553015235CB643000FE5ED /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		EE55302E235CB643000FE5ED /* Debug */ = {
@@ -448,7 +501,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.Practice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -466,7 +519,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.personal.Practice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -596,12 +649,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EE55300F235CB641000FE5ED /* Practice.xcdatamodeld */ = {
+		EE553040235CC2C8000FE5ED /* Practice.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EE553010235CB641000FE5ED /* Practice.xcdatamodel */,
+				EE553041235CC2C8000FE5ED /* Practice.xcdatamodel */,
 			);
-			currentVersion = EE553010235CB641000FE5ED /* Practice.xcdatamodel */;
+			currentVersion = EE553041235CC2C8000FE5ED /* Practice.xcdatamodel */;
 			path = Practice.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

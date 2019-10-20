@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import Combine
+import RxSwift
 
 protocol MoviesRepositoryInterface {
-    func retrieveMovies() -> [Movie]
+    func retrieveMovies() -> Single<[Movie]>
 }
 
 class MoviesRepository {
@@ -25,7 +25,21 @@ class MoviesRepository {
 }
 
 extension MoviesRepository: MoviesRepositoryInterface {
-    func retrieveMovies() -> [Movie] {
-        return []
+    func retrieveMovies() -> Single<[Movie]> {
+        return Single.create(subscribe: { observer in
+            let request = self.network.get(Endpoints.list(1).path, parameters: ["limit": 100]) { result in
+                switch result {
+                case let .failure(error):
+                    observer(.error(error))
+                case let .success(movies):
+                    print(movies)
+                    observer(.success([]))
+                }
+            }
+            return Disposables.create {
+                guard let req = request else { return }
+                self.network.cancelNetworkCall(request: req)
+            }
+        })
     }
 }

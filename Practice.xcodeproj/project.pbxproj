@@ -88,6 +88,7 @@
 		EE553072235CF7FD000FE5ED /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
 		EE553074235CFDA8000FE5ED /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EE553077235D0408000FE5ED /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
+		EE553079235D0E08000FE5ED /* Practice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Practice.entitlements; sourceTree = "<group>"; };
 		F121B9661CF31F0C843B6DFF /* Pods-PracticeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeTests.release.xcconfig"; path = "Target Support Files/Pods-PracticeTests/Pods-PracticeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +159,7 @@
 		EE553005235CB641000FE5ED /* Practice */ = {
 			isa = PBXGroup;
 			children = (
+				EE553079235D0E08000FE5ED /* Practice.entitlements */,
 				EE553006235CB641000FE5ED /* AppDelegate.swift */,
 				EE553076235D03FE000FE5ED /* Repositories */,
 				EE55306D235CEDCB000FE5ED /* Utils */,
@@ -708,6 +710,7 @@
 			baseConfigurationReference = BD06089D280FF9E6608CCD04 /* Pods-Practice.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Practice/Practice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CM94Q5EV49;
 				INFOPLIST_FILE = Practice/Info.plist;
@@ -727,6 +730,7 @@
 			baseConfigurationReference = C543596474E4FAE346A4FF32 /* Pods-Practice.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Practice/Practice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CM94Q5EV49;
 				INFOPLIST_FILE = Practice/Info.plist;

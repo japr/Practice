@@ -14,6 +14,8 @@
 		EE31FED5235E423E00CF32DE /* DetailsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31FED0235E423E00CF32DE /* DetailsWireframe.swift */; };
 		EE31FED6235E423E00CF32DE /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE31FED1235E423E00CF32DE /* Details.storyboard */; };
 		EE31FED7235E423E00CF32DE /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31FED3235E423E00CF32DE /* DetailsViewController.swift */; };
+		EE31FED9235E4C6500CF32DE /* MovieVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31FED8235E4C6500CF32DE /* MovieVideo.swift */; };
+		EE31FEDB235E4DDC00CF32DE /* MovieVideoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31FEDA235E4DDC00CF32DE /* MovieVideoList.swift */; };
 		EE553007235CB641000FE5ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553006235CB641000FE5ED /* AppDelegate.swift */; };
 		EE553013235CB643000FE5ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE553012235CB643000FE5ED /* Assets.xcassets */; };
 		EE553021235CB643000FE5ED /* PracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553020235CB643000FE5ED /* PracticeTests.swift */; };
@@ -70,6 +72,8 @@
 		EE31FED0235E423E00CF32DE /* DetailsWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsWireframe.swift; sourceTree = "<group>"; };
 		EE31FED1235E423E00CF32DE /* Details.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		EE31FED3235E423E00CF32DE /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		EE31FED8235E4C6500CF32DE /* MovieVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVideo.swift; sourceTree = "<group>"; };
+		EE31FEDA235E4DDC00CF32DE /* MovieVideoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVideoList.swift; sourceTree = "<group>"; };
 		EE553003235CB641000FE5ED /* Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE553006235CB641000FE5ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE553012235CB643000FE5ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 				EE553053235CCE2E000FE5ED /* Movie.swift */,
 				EE553066235CDF6F000FE5ED /* CachedMovie.swift */,
 				EE55307A235D11B7000FE5ED /* List.swift */,
+				EE31FED8235E4C6500CF32DE /* MovieVideo.swift */,
+				EE31FEDA235E4DDC00CF32DE /* MovieVideoList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -604,10 +610,12 @@
 				EE553048235CC2FD000FE5ED /* MainPresenter.swift in Sources */,
 				EE55307B235D11B7000FE5ED /* List.swift in Sources */,
 				EE553078235D0408000FE5ED /* MoviesRepository.swift in Sources */,
+				EE31FED9235E4C6500CF32DE /* MovieVideo.swift in Sources */,
 				EE553007235CB641000FE5ED /* AppDelegate.swift in Sources */,
 				EE553067235CDF6F000FE5ED /* CachedMovie.swift in Sources */,
 				EE553058235CD623000FE5ED /* DatabaseEntity.swift in Sources */,
 				EE31FED4235E423E00CF32DE /* DetailsPresenter.swift in Sources */,
+				EE31FEDB235E4DDC00CF32DE /* MovieVideoList.swift in Sources */,
 				EE553042235CC2C8000FE5ED /* Practice.xcdatamodeld in Sources */,
 				EE31FED7235E423E00CF32DE /* DetailsViewController.swift in Sources */,
 				EE553073235CF7FD000FE5ED /* UIViewController+Additions.swift in Sources */,

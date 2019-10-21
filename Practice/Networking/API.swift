@@ -33,6 +33,7 @@ protocol EndpointPath {
 enum Endpoints {
     case list(_ listId: Int)
     case movie(_ category: MoviesCategory?)
+    case movieVideos(_ movieId: String)
     case searchMovies
 }
 
@@ -47,6 +48,7 @@ extension Endpoints: EndpointPath {
             case .upcoming: return "/movie/upcoming"
             default: return "/movie/"
             }
+        case .movieVideos(let id): return "/movie/\(id)/videos"
         case .searchMovies: return "/search/movie"
         }
     }

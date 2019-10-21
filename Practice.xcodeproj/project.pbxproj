@@ -25,13 +25,14 @@
 		EE553056235CD5BA000FE5ED /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553055235CD5BA000FE5ED /* Database.swift */; };
 		EE553058235CD623000FE5ED /* DatabaseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553057235CD623000FE5ED /* DatabaseEntity.swift */; };
 		EE55305B235CD651000FE5ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE55305A235CD651000FE5ED /* CoreData.framework */; };
-		EE553067235CDF6F000FE5ED /* CachedMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553066235CDF6F000FE5ED /* CachedMovies.swift */; };
+		EE553067235CDF6F000FE5ED /* CachedMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553066235CDF6F000FE5ED /* CachedMovie.swift */; };
 		EE55306A235CEA0E000FE5ED /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553069235CEA0E000FE5ED /* MovieCollectionViewCell.swift */; };
 		EE55306F235CEDDD000FE5ED /* CollectionViewCell+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55306E235CEDDD000FE5ED /* CollectionViewCell+Additions.swift */; };
 		EE553071235CF7B6000FE5ED /* UIStoryboard+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553070235CF7B6000FE5ED /* UIStoryboard+Additions.swift */; };
 		EE553073235CF7FD000FE5ED /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553072235CF7FD000FE5ED /* UIViewController+Additions.swift */; };
 		EE553075235CFDA8000FE5ED /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553074235CFDA8000FE5ED /* NetworkManager.swift */; };
 		EE553078235D0408000FE5ED /* MoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553077235D0408000FE5ED /* MoviesRepository.swift */; };
+		EE55307B235D11B7000FE5ED /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55307A235D11B7000FE5ED /* List.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +82,7 @@
 		EE553055235CD5BA000FE5ED /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		EE553057235CD623000FE5ED /* DatabaseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseEntity.swift; sourceTree = "<group>"; };
 		EE55305A235CD651000FE5ED /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		EE553066235CDF6F000FE5ED /* CachedMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedMovies.swift; sourceTree = "<group>"; };
+		EE553066235CDF6F000FE5ED /* CachedMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedMovie.swift; sourceTree = "<group>"; };
 		EE553069235CEA0E000FE5ED /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE55306E235CEDDD000FE5ED /* CollectionViewCell+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionViewCell+Additions.swift"; sourceTree = "<group>"; };
 		EE553070235CF7B6000FE5ED /* UIStoryboard+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Additions.swift"; sourceTree = "<group>"; };
@@ -89,6 +90,7 @@
 		EE553074235CFDA8000FE5ED /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EE553077235D0408000FE5ED /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
 		EE553079235D0E08000FE5ED /* Practice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Practice.entitlements; sourceTree = "<group>"; };
+		EE55307A235D11B7000FE5ED /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		F121B9661CF31F0C843B6DFF /* Pods-PracticeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeTests.release.xcconfig"; path = "Target Support Files/Pods-PracticeTests/Pods-PracticeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,7 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				EE553053235CCE2E000FE5ED /* Movie.swift */,
-				EE553066235CDF6F000FE5ED /* CachedMovies.swift */,
+				EE553066235CDF6F000FE5ED /* CachedMovie.swift */,
+				EE55307A235D11B7000FE5ED /* List.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -544,9 +547,10 @@
 				EE553046235CC2F4000FE5ED /* MainWireframe.swift in Sources */,
 				EE553071235CF7B6000FE5ED /* UIStoryboard+Additions.swift in Sources */,
 				EE553048235CC2FD000FE5ED /* MainPresenter.swift in Sources */,
+				EE55307B235D11B7000FE5ED /* List.swift in Sources */,
 				EE553078235D0408000FE5ED /* MoviesRepository.swift in Sources */,
 				EE553007235CB641000FE5ED /* AppDelegate.swift in Sources */,
-				EE553067235CDF6F000FE5ED /* CachedMovies.swift in Sources */,
+				EE553067235CDF6F000FE5ED /* CachedMovie.swift in Sources */,
 				EE553058235CD623000FE5ED /* DatabaseEntity.swift in Sources */,
 				EE553042235CC2C8000FE5ED /* Practice.xcdatamodeld in Sources */,
 				EE553073235CF7FD000FE5ED /* UIViewController+Additions.swift in Sources */,

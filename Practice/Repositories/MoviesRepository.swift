@@ -13,6 +13,10 @@ protocol MoviesRepositoryInterface {
     func retrieveMovies() -> Single<[Movie]>
 }
 
+enum MoviesRepositoryErrors: Error {
+    case badData
+}
+
 class MoviesRepository {
 
     private let database: Database
@@ -32,8 +36,30 @@ extension MoviesRepository: MoviesRepositoryInterface {
                 case let .failure(error):
                     observer(.error(error))
                 case let .success(movies):
-                    print(movies)
-                    observer(.success([]))
+                    do {
+                        let context = Database.temporaryContext()
+                        let list = try JSONDecoder().decode(List.self, from: movies)
+                        Database.sharedQueue.async {
+                            let entities = list.results.compactMap { [weak self] movie -> CachedMovie? in
+                                guard let strongSelf = self else { return nil }
+
+                                do {
+                                    let cachedMovie: CachedMovie = try strongSelf.database.insertNewEntity(in: context)
+                                    cachedMovie.update(from: movie)
+                                    return cachedMovie
+                                } catch _ { return nil }
+                            }
+                            self.database.save(entities, in: context) { (error) in
+                                guard let error = error else {
+                                    observer(.success(list.results))
+                                    return
+                                }
+                                observer(.error(error))
+                            }
+                        }
+                    } catch let error {
+                        observer(.error(error))
+                    }
                 }
             }
             return Disposables.create {

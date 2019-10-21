@@ -12,11 +12,11 @@ enum NetworkError: Error {
     case badURL
 }
 
-typealias ResponseJSONCallback = (Swift.Result<Any, Error>) -> Void
+typealias ResponseDataCallback = (Swift.Result<Data, Error>) -> Void
 
 protocol NetworkInferface {
     func cancelNetworkCall(request: Alamofire.DataRequest)
-    func get(_ path: String, parameters: [String: Any]?, _ callback: @escaping ResponseJSONCallback) -> Alamofire.DataRequest?
+    func get(_ path: String, parameters: [String: Any]?, _ callback: @escaping ResponseDataCallback) -> Alamofire.DataRequest?
 }
 
 class NetworkConnection {
@@ -47,7 +47,7 @@ extension NetworkConnection: NetworkInferface {
         request.cancel()
     }
 
-    func get(_ path: String, parameters: [String: Any]? = nil, _ callback: @escaping ResponseJSONCallback) -> Alamofire.DataRequest? {
+    func get(_ path: String, parameters: [String: Any]? = nil, _ callback: @escaping ResponseDataCallback) -> Alamofire.DataRequest? {
         guard let url = URL(string: environment.path + path) else {
             callback(.failure(NetworkError.badURL))
             return nil
@@ -59,7 +59,7 @@ extension NetworkConnection: NetworkInferface {
                 parameters: parameters,
                 encoding: Alamofire.URLEncoding.default,
                 headers: defaultHTTPHeaders
-        ).responseJSON { (response) in
+        ).responseData { (response) in
             switch response.result {
             case let .failure(error): callback(.failure(error))
             case let .success(value): callback(.success(value))

@@ -51,7 +51,7 @@ extension MoviesRepository: MoviesRepositoryInterface {
 
                                 do {
                                     let cachedMovie: CachedMovie = try strongSelf.database.insertNewEntity(in: context)
-                                    cachedMovie.update(from: movie)
+                                    cachedMovie.update(from: movie, and: category ?? .popular)
                                     return cachedMovie
                                 } catch _ { return nil }
                             }

@@ -9,6 +9,7 @@
 import CoreData
 
 class CachedMovie: NSManagedObject {
+    @NSManaged public var category: Int32
     @NSManaged public var title: String?
     @NSManaged public var voteAverage: Double
     @NSManaged public var overview: String?
@@ -16,13 +17,14 @@ class CachedMovie: NSManagedObject {
     @NSManaged public var id: Int64
     @NSManaged public var posterPath: String?
 
-    func update(from movie: Movie) {
+    func update(from movie: Movie, and cat: MoviesCategory) {
         title = movie.title
         voteAverage = movie.votesAverage
         overview = movie.overview
         videoAvailable = movie.videoAvailable
         id = movie.id
         posterPath = movie.posterPath
+        category = Int32(cat.rawValue)
     }
 }
 

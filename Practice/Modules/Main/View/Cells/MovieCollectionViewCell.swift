@@ -13,6 +13,16 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var votesLabel: UILabel!
+
+    private let connection: NetworkConnection = .default
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        descriptionLabel.text = nil
+        posterImageView.image = nil
+        titleLabel.text = nil
+        votesLabel.text = nil
+    }
 }
 
 extension MovieCollectionViewCell: ConfigurableCell {
@@ -22,5 +32,15 @@ extension MovieCollectionViewCell: ConfigurableCell {
         titleLabel.text = item.title
         descriptionLabel.text = item.overview
         votesLabel.text = "Votes: \(item.votesAverage)"
+
+        connection.getImage(item.posterPath) { [weak self] result in
+            switch result {
+            case .failure(_): return
+            case let .success(data):
+                DispatchQueue.main.async {
+                    self?.posterImageView.image = UIImage(data: data, scale: 1.0)
+                }
+            }
+        }
     }
 }

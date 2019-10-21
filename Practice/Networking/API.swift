@@ -14,12 +14,14 @@ protocol EnvironmentPath {
 
 enum Environment {
     case dev
+    case images
 }
 
 extension Environment: EnvironmentPath {
     var path: String {
         switch self {
         case .dev:  return "https://api.themoviedb.org/3"
+        case .images: return "https://image.tmdb.org/t/p/w300"
         }
     }
 }

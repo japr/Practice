@@ -11,6 +11,7 @@ import RxSwift
 
 protocol MoviesRepositoryInterface {
     func retrieveMovies(with category: MoviesCategory?) -> Single<[Movie]>
+    func retrieveMovies(with title: String) -> Single<[Movie]>
 }
 
 enum MoviesCategory: Int {
@@ -32,40 +33,77 @@ class MoviesRepository {
         self.database = database
         self.network = network
     }
+
+    private func getList(from data: Data) -> List? {
+        do {
+            let list = try JSONDecoder().decode(List.self, from: data)
+            return list
+        } catch _ {
+            return nil
+        }
+    }
+
+    private func saveListToDB(category: MoviesCategory?, movies: [Movie], observer: @escaping ((SingleEvent<[Movie]>) -> Void)) {
+        let context = Database.temporaryContext()
+        Database.sharedQueue.async {
+            let entities = movies.compactMap { [weak self] movie -> CachedMovie? in
+                guard let strongSelf = self else { return nil }
+
+                do {
+                    let cachedMovie: CachedMovie = try strongSelf.database.insertNewEntity(in: context)
+                    cachedMovie.update(from: movie, and: category ?? .popular)
+                    return cachedMovie
+                } catch _ { return nil }
+            }
+            self.database.save(entities, in: context) { (error) in
+                guard let error = error else {
+                    observer(.success(movies))
+                    return
+                }
+                observer(.error(error))
+            }
+        }
+    }
 }
 
 extension MoviesRepository: MoviesRepositoryInterface {
     func retrieveMovies(with category: MoviesCategory?) -> Single<[Movie]> {
         return Single.create(subscribe: { observer in
-            let request = self.network.get(Endpoints.movie(category).path, parameters: ["limit": 100]) { result in
+            let endpoint = Endpoints.movie(category).path
+            let request = self.network.get(endpoint, parameters: ["limit": 100]) { result in
                 switch result {
                 case let .failure(error):
                     observer(.error(error))
                 case let .success(movies):
-                    do {
-                        let context = Database.temporaryContext()
-                        let list = try JSONDecoder().decode(List.self, from: movies)
-                        Database.sharedQueue.async {
-                            let entities = list.results.compactMap { [weak self] movie -> CachedMovie? in
-                                guard let strongSelf = self else { return nil }
-
-                                do {
-                                    let cachedMovie: CachedMovie = try strongSelf.database.insertNewEntity(in: context)
-                                    cachedMovie.update(from: movie, and: category ?? .popular)
-                                    return cachedMovie
-                                } catch _ { return nil }
-                            }
-                            self.database.save(entities, in: context) { (error) in
-                                guard let error = error else {
-                                    observer(.success(list.results))
-                                    return
-                                }
-                                observer(.error(error))
-                            }
-                        }
-                    } catch let error {
-                        observer(.error(error))
+                    guard let list = self.getList(from: movies) else {
+                        observer(.error(MoviesRepositoryErrors.badData))
+                        return
                     }
+                    self.saveListToDB(category: category, movies: list.results, observer: observer)
+                }
+            }
+            return Disposables.create {
+                guard let req = request else { return }
+                self.network.cancelNetworkCall(request: req)
+            }
+        })
+    }
+
+    func retrieveMovies(with title: String) -> Single<[Movie]> {
+        return Single.create(subscribe: { observer in
+            let endpoint = Endpoints.searchMovies.path
+            let params: [String : Any] = ["limit": 100,
+                                          "query": title]
+            let request = self.network.get(endpoint, parameters: params) { result in
+                switch result {
+                case let .failure(error):
+                    observer(.error(error))
+                case let .success(data):
+                    guard let list = self.getList(from: data) else {
+                        observer(.error(MoviesRepositoryErrors.badData))
+                        return
+                    }
+                    observer(.success(list.results))
                 }
             }
             return Disposables.create {

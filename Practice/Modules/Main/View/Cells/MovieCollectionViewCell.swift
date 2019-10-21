@@ -34,7 +34,9 @@ extension MovieCollectionViewCell: ConfigurableCell {
         descriptionLabel.sizeToFit()
         votesLabel.text = "Votes: \(item.votesAverage)"
 
-        connection.getImage(item.posterPath) { [weak self] result in
+        guard let poster = item.posterPath else { return }
+
+        connection.getImage(poster) { [weak self] result in
             switch result {
             case .failure(_): return
             case let .success(data):

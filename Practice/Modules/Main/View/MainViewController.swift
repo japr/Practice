@@ -17,19 +17,33 @@ class MainViewController: UIViewController {
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     private let disposeBag = DisposeBag()
+    private let searchController = UISearchController(searchResultsController: nil)
 
     var presenter: MainPresenter?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        bindPresenter()
+        setupSearchController()
+
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         }
         collectionView.delegate = self
+    }
+
+    private func bindPresenter() {
         let categorySelected = categoriesControl.rx.selectedSegmentIndex.asDriver()
         let itemSelected = collectionView.rx.itemSelected.asDriver()
-        let input = MainPresenter.Input(categorySelected: categorySelected, itemSelected: itemSelected)
+        let searchBarInput = searchController.searchBar.rx.text.asDriver()
+        let cancelSearchInput = searchController.searchBar.rx.cancelButtonClicked.asDriver()
+        let input = MainPresenter.Input(
+            cancelSearch: cancelSearchInput,
+            categorySelected: categorySelected,
+            itemSelected: itemSelected,
+            searchText: searchBarInput
+        )
 
         let output = presenter?.transform(input)
         collectionView.dataSource = output?.datasource
@@ -46,6 +60,13 @@ class MainViewController: UIViewController {
             self?.collectionView.reloadData()
         })
         .disposed(by: disposeBag)
+    }
+
+    private func setupSearchController() {
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Movies"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
 }
 

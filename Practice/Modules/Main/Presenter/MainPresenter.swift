@@ -7,24 +7,57 @@
 //
 
 import Foundation
+import RxCocoa
 import RxSwift
 
 class MainPresenter {
     private let disposeBag = DisposeBag()
     private let moviesRepository: MoviesRepositoryInterface
+    private let loadingState: BehaviorRelay<Bool>
 
     var wireframe: MainWireframeInterface?
 
-    init(repository: MoviesRepositoryInterface) {
-        self.moviesRepository = repository
+    struct Input {
+        let categorySelected: Driver<Int>
+        let itemSelected: Driver<IndexPath>
+        let viewWillAppear: Driver<Void>
     }
 
-    func loadMoviesData() {
-        moviesRepository.retrieveMovies().asObservable()
-            .subscribe(onNext: { (movies) in
-                
-            }, onError: { (error) in
+    struct Output {
+        let isInloadingState: Driver<Bool>
+    }
 
+    init(repository: MoviesRepositoryInterface) {
+        self.moviesRepository = repository
+        self.loadingState = BehaviorRelay<Bool>(value: false)
+    }
+
+    private func loadMoviesData(with category: MoviesCategory?) {
+        moviesRepository.retrieveMovies(with: category).asObservable()
+        .subscribe(onNext: { [weak self] movies in
+            self?.loadingState.accept(false)
+        }, onError: { [weak self] error in
+            self?.loadingState.accept(false)
+        })
+        .disposed(by: disposeBag)
+    }
+
+    func transform(_ input: Input) -> Output? {
+        input.viewWillAppear.drive(onNext: { [weak self] in
+            self?.loadMoviesData(with: .popular)
             }).disposed(by: disposeBag)
+        input.itemSelected
+        .drive(onNext: { [weak self] indexPath in
+            //self?.wireframe?.toMovie(with: <#T##Movie#>)
+        })
+        .disposed(by: disposeBag)
+        input.categorySelected
+        .drive(onNext: { [weak self](cat) in
+            self?.loadingState.accept(true)
+            self?.loadMoviesData(with: MoviesCategory(rawValue: cat))
+        })
+        .disposed(by: disposeBag)
+
+        return Output(isInloadingState: loadingState.asDriver())
     }
 }

@@ -9,7 +9,6 @@
 import Foundation
 
 struct List {
-    let id: Int64
     let page: Int
     let results: [Movie]
     let totalPages: Int
@@ -17,7 +16,6 @@ struct List {
 
 extension List: Codable {
     enum CodingKeys: String, CodingKey {
-        case id
         case page
         case results
         case totalPages = "total_pages"

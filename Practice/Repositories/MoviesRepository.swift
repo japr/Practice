@@ -10,7 +10,13 @@ import Foundation
 import RxSwift
 
 protocol MoviesRepositoryInterface {
-    func retrieveMovies() -> Single<[Movie]>
+    func retrieveMovies(with category: MoviesCategory?) -> Single<[Movie]>
+}
+
+enum MoviesCategory: Int {
+    case popular
+    case topRated
+    case upcoming
 }
 
 enum MoviesRepositoryErrors: Error {
@@ -29,9 +35,9 @@ class MoviesRepository {
 }
 
 extension MoviesRepository: MoviesRepositoryInterface {
-    func retrieveMovies() -> Single<[Movie]> {
+    func retrieveMovies(with category: MoviesCategory?) -> Single<[Movie]> {
         return Single.create(subscribe: { observer in
-            let request = self.network.get(Endpoints.list(1).path, parameters: ["limit": 100]) { result in
+            let request = self.network.get(Endpoints.movie(category).path, parameters: ["limit": 100]) { result in
                 switch result {
                 case let .failure(error):
                     observer(.error(error))

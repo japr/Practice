@@ -16,6 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="5eu-ey-eRe">
+                                <rect key="frame" x="188.5" y="385.5" width="37" height="37"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LbP-RV-Uxq">
                                 <rect key="frame" x="83" y="30" width="248" height="31"/>
                                 <constraints>
@@ -27,7 +31,7 @@
                                     <segment title="Upcoming"/>
                                 </segments>
                             </segmentedControl>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iXm-g6-W3B">
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iXm-g6-W3B">
                                 <rect key="frame" x="0.0" y="70" width="414" height="704"/>
                                 <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KUY-fX-Sdi">
@@ -102,7 +106,9 @@
                         <constraints>
                             <constraint firstItem="LbP-RV-Uxq" firstAttribute="top" secondItem="3hx-Yp-CHC" secondAttribute="top" constant="30" id="2Jq-yE-1Xd"/>
                             <constraint firstItem="LbP-RV-Uxq" firstAttribute="centerX" secondItem="md2-CI-fDj" secondAttribute="centerX" id="6Ma-HJ-4sk"/>
+                            <constraint firstItem="5eu-ey-eRe" firstAttribute="centerX" secondItem="md2-CI-fDj" secondAttribute="centerX" id="AOi-jV-sdm"/>
                             <constraint firstItem="3hx-Yp-CHC" firstAttribute="bottom" secondItem="iXm-g6-W3B" secondAttribute="bottom" id="KXE-M4-V2g"/>
+                            <constraint firstItem="5eu-ey-eRe" firstAttribute="centerY" secondItem="md2-CI-fDj" secondAttribute="centerY" id="XzK-Yo-G27"/>
                             <constraint firstItem="3hx-Yp-CHC" firstAttribute="trailing" secondItem="iXm-g6-W3B" secondAttribute="trailing" id="gHA-Q3-BgP"/>
                             <constraint firstItem="iXm-g6-W3B" firstAttribute="top" secondItem="LbP-RV-Uxq" secondAttribute="bottom" constant="10" id="mGc-jE-3mc"/>
                             <constraint firstItem="iXm-g6-W3B" firstAttribute="leading" secondItem="3hx-Yp-CHC" secondAttribute="leading" id="zAY-d1-vPL"/>
@@ -111,6 +117,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="5eu-ey-eRe" id="o3U-BM-m8C"/>
                         <outlet property="categoriesControl" destination="LbP-RV-Uxq" id="gtz-ED-AoM"/>
                         <outlet property="collectionView" destination="iXm-g6-W3B" id="iOy-Fk-Tz6"/>
                     </connections>

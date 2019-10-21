@@ -10,6 +10,10 @@
 		27A5E2477BC11EB6AAD9A8B6 /* Pods_Practice_PracticeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400F2D4C8B41DF0348D9F7F7 /* Pods_Practice_PracticeUITests.framework */; };
 		27CE6E3607BD0B1362DC234B /* Pods_PracticeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F3E657E7AA3C74B243638C /* Pods_PracticeTests.framework */; };
 		BA6E79C630617E46EFE68B1F /* Pods_Practice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D3C9396037C5AB45CB6CA5F /* Pods_Practice.framework */; };
+		EE31FED4235E423E00CF32DE /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31FECE235E423E00CF32DE /* DetailsPresenter.swift */; };
+		EE31FED5235E423E00CF32DE /* DetailsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31FED0235E423E00CF32DE /* DetailsWireframe.swift */; };
+		EE31FED6235E423E00CF32DE /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE31FED1235E423E00CF32DE /* Details.storyboard */; };
+		EE31FED7235E423E00CF32DE /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31FED3235E423E00CF32DE /* DetailsViewController.swift */; };
 		EE553007235CB641000FE5ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553006235CB641000FE5ED /* AppDelegate.swift */; };
 		EE553013235CB643000FE5ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE553012235CB643000FE5ED /* Assets.xcassets */; };
 		EE553021235CB643000FE5ED /* PracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553020235CB643000FE5ED /* PracticeTests.swift */; };
@@ -62,6 +66,10 @@
 		9D3C9396037C5AB45CB6CA5F /* Pods_Practice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD06089D280FF9E6608CCD04 /* Pods-Practice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice.debug.xcconfig"; path = "Target Support Files/Pods-Practice/Pods-Practice.debug.xcconfig"; sourceTree = "<group>"; };
 		C543596474E4FAE346A4FF32 /* Pods-Practice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice.release.xcconfig"; path = "Target Support Files/Pods-Practice/Pods-Practice.release.xcconfig"; sourceTree = "<group>"; };
+		EE31FECE235E423E00CF32DE /* DetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		EE31FED0235E423E00CF32DE /* DetailsWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsWireframe.swift; sourceTree = "<group>"; };
+		EE31FED1235E423E00CF32DE /* Details.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
+		EE31FED3235E423E00CF32DE /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		EE553003235CB641000FE5ED /* Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE553006235CB641000FE5ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE553012235CB643000FE5ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,6 +144,41 @@
 				F121B9661CF31F0C843B6DFF /* Pods-PracticeTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		EE31FECC235E423E00CF32DE /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				EE31FECD235E423E00CF32DE /* Presenter */,
+				EE31FECF235E423E00CF32DE /* Wireframe */,
+				EE31FED2235E423E00CF32DE /* View */,
+				EE31FED1235E423E00CF32DE /* Details.storyboard */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		EE31FECD235E423E00CF32DE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				EE31FECE235E423E00CF32DE /* DetailsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		EE31FECF235E423E00CF32DE /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				EE31FED0235E423E00CF32DE /* DetailsWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		EE31FED2235E423E00CF32DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EE31FED3235E423E00CF32DE /* DetailsViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		EE552FFA235CB641000FE5ED = {
@@ -218,6 +261,7 @@
 		EE55303B235CC2B6000FE5ED /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				EE31FECC235E423E00CF32DE /* Details */,
 				EE55303C235CC2B6000FE5ED /* Main */,
 			);
 			path = Modules;
@@ -426,6 +470,7 @@
 				EE55304E235CC773000FE5ED /* Main.storyboard in Resources */,
 				EE553050235CC780000FE5ED /* Launch Screen.storyboard in Resources */,
 				EE553013235CB643000FE5ED /* Assets.xcassets in Resources */,
+				EE31FED6235E423E00CF32DE /* Details.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,13 +607,16 @@
 				EE553007235CB641000FE5ED /* AppDelegate.swift in Sources */,
 				EE553067235CDF6F000FE5ED /* CachedMovie.swift in Sources */,
 				EE553058235CD623000FE5ED /* DatabaseEntity.swift in Sources */,
+				EE31FED4235E423E00CF32DE /* DetailsPresenter.swift in Sources */,
 				EE553042235CC2C8000FE5ED /* Practice.xcdatamodeld in Sources */,
+				EE31FED7235E423E00CF32DE /* DetailsViewController.swift in Sources */,
 				EE553073235CF7FD000FE5ED /* UIViewController+Additions.swift in Sources */,
 				EEECCB2E235D6BC700594018 /* MainDatasource.swift in Sources */,
 				EE553052235CCBF2000FE5ED /* API.swift in Sources */,
 				EE55306F235CEDDD000FE5ED /* CollectionViewCell+Additions.swift in Sources */,
 				EE55306A235CEA0E000FE5ED /* MovieCollectionViewCell.swift in Sources */,
 				EE553075235CFDA8000FE5ED /* NetworkManager.swift in Sources */,
+				EE31FED5235E423E00CF32DE /* DetailsWireframe.swift in Sources */,
 				EE553056235CD5BA000FE5ED /* Database.swift in Sources */,
 				EE553044235CC2E3000FE5ED /* MainViewController.swift in Sources */,
 			);

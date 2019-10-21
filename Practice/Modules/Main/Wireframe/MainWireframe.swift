@@ -30,6 +30,15 @@ class MainWireframe {
 
 extension MainWireframe: MainWireframeInterface {
     func toMovie(with movie: Movie) {
+        let detailsStoryboard = UIStoryboard(storyboardName: .details)
+        let wireframe = DetailsWireframe(navigationController: navigationController,
+                                         storyBoard: detailsStoryboard)
+        let presenter = DetailsPresenter(movie: movie)
+        presenter.wireframe = wireframe
 
+        let controller: DetailsViewController = detailsStoryboard.instantiateViewController()
+        controller.presenter = presenter
+
+        navigationController.pushViewController(controller, animated: true)
     }
 }

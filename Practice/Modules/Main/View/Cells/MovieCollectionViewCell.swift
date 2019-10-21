@@ -31,6 +31,7 @@ extension MovieCollectionViewCell: ConfigurableCell {
     func configure(with item: Movie) {
         titleLabel.text = item.title
         descriptionLabel.text = item.overview
+        descriptionLabel.sizeToFit()
         votesLabel.text = "Votes: \(item.votesAverage)"
 
         connection.getImage(item.posterPath) { [weak self] result in

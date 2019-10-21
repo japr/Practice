@@ -21,7 +21,6 @@ class MainPresenter {
     struct Input {
         let categorySelected: Driver<Int>
         let itemSelected: Driver<IndexPath>
-        let viewWillAppear: Driver<Void>
     }
 
     struct Output {
@@ -39,7 +38,7 @@ class MainPresenter {
         moviesRepository.retrieveMovies(with: category).asObservable()
         .subscribe(onNext: { [weak self] movies in
             self?.loadingState.accept(false)
-            self?.datasource.setItems(movies)
+            self?.datasource.setItems(movies, animated: true)
         }, onError: { [weak self] error in
             self?.loadingState.accept(false)
             self?.datasource.setItems([])
@@ -48,11 +47,6 @@ class MainPresenter {
     }
 
     func transform(_ input: Input) -> Output? {
-        input.viewWillAppear.drive(onNext: { [weak self] in
-            self?.loadMoviesData(with: .popular)
-        })
-        .disposed(by: disposeBag)
-
         input.itemSelected
         .drive(onNext: { [weak self] indexPath in
             //self?.wireframe?.toMovie(with: <#T##Movie#>)

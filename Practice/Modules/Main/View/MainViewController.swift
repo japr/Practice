@@ -23,22 +23,26 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        }
         let categorySelected = categoriesControl.rx.selectedSegmentIndex.asDriver()
         let itemSelected = collectionView.rx.itemSelected.asDriver()
-        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).map { _ in }.asDriver(onErrorJustReturn: ())
-        let input = MainPresenter.Input(categorySelected: categorySelected, itemSelected: itemSelected, viewWillAppear: viewWillAppear)
+        let input = MainPresenter.Input(categorySelected: categorySelected, itemSelected: itemSelected)
 
         let output = presenter?.transform(input)
+        collectionView.dataSource = output?.datasource
         output?.isInloadingState.drive(onNext: { [weak self](loading) in
             loading ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
+            self?.collectionView.isHidden = loading
         })
         .disposed(by: disposeBag)
-        output?.isInloadingState.drive(collectionView.rx.isHidden).disposed(by: disposeBag)
         let itemsSet = output?.datasource.uiUpdateRequired.asDriver()
-        itemsSet?.drive(onNext: { [weak self] updateRequired in
+        itemsSet?
+        .drive(onNext: { [weak self] _ in
+            self?.collectionView.collectionViewLayout.invalidateLayout()
             self?.collectionView.reloadData()
         })
         .disposed(by: disposeBag)
-        collectionView.dataSource = output?.datasource
     }
 }

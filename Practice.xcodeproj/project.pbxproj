@@ -74,6 +74,7 @@
 		EE31FED3235E423E00CF32DE /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		EE31FED8235E4C6500CF32DE /* MovieVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVideo.swift; sourceTree = "<group>"; };
 		EE31FEDA235E4DDC00CF32DE /* MovieVideoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVideoList.swift; sourceTree = "<group>"; };
+		EE31FEDC235E5EA200CF32DE /* Practice1.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Practice1.2.xcdatamodel; sourceTree = "<group>"; };
 		EE553003235CB641000FE5ED /* Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE553006235CB641000FE5ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE553012235CB643000FE5ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -951,10 +952,11 @@
 		EE553040235CC2C8000FE5ED /* Practice.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				EE31FEDC235E5EA200CF32DE /* Practice1.2.xcdatamodel */,
 				EE7FD597235DEE830009E27C /* Practice1.1.xcdatamodel */,
 				EE553041235CC2C8000FE5ED /* Practice.xcdatamodel */,
 			);
-			currentVersion = EE7FD597235DEE830009E27C /* Practice1.1.xcdatamodel */;
+			currentVersion = EE31FEDC235E5EA200CF32DE /* Practice1.2.xcdatamodel */;
 			path = Practice.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

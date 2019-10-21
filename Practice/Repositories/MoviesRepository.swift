@@ -67,6 +67,19 @@ class MoviesRepository {
             }
         }
     }
+
+    private func loadLocalMovies(with title: String, observer: @escaping ((SingleEvent<[Movie]>) -> Void)) {
+        let predicate = NSPredicate(format: "title BEGINSWITH[cd] '\(title)'")
+        let context = Database.temporaryContext()
+        Database.sharedQueue.async {
+            let cachedMovies: [CachedMovie] = Database.loadEntities(in: context, with: predicate) ?? []
+            let movies = cachedMovies.compactMap { cached -> Movie? in
+                let movie: Movie? = cached.map()
+                return movie
+            }
+            observer(.success(movies))
+        }
+    }
 }
 
 extension MoviesRepository: MoviesRepositoryInterface {
@@ -100,8 +113,7 @@ extension MoviesRepository: MoviesRepositoryInterface {
     func retrieveMovies(with title: String) -> Single<[Movie]> {
         return Single.create(subscribe: { observer in
             guard self.currentNetworkStatus == .reachable else {
-                print("Should start local search")
-                observer(.success([]))
+                self.loadLocalMovies(with: title, observer: observer)
                 return Disposables.create()
             }
             let endpoint = Endpoints.searchMovies.path

@@ -27,3 +27,9 @@ extension Movie: Codable {
         case votesAverage = "vote_average"
     }
 }
+
+extension Movie: Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

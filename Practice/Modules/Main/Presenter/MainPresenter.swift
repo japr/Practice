@@ -14,6 +14,7 @@ class MainPresenter {
     private let disposeBag = DisposeBag()
     private let moviesRepository: MoviesRepositoryInterface
     private let loadingState: BehaviorRelay<Bool>
+    private let datasource: MainDatasource<Movie, MovieCollectionViewCell>
 
     var wireframe: MainWireframeInterface?
 
@@ -25,19 +26,23 @@ class MainPresenter {
 
     struct Output {
         let isInloadingState: Driver<Bool>
+        let datasource: MainDatasource<Movie, MovieCollectionViewCell>
     }
 
     init(repository: MoviesRepositoryInterface) {
         self.moviesRepository = repository
         self.loadingState = BehaviorRelay<Bool>(value: false)
+        self.datasource = MainDatasource()
     }
 
     private func loadMoviesData(with category: MoviesCategory?) {
         moviesRepository.retrieveMovies(with: category).asObservable()
         .subscribe(onNext: { [weak self] movies in
             self?.loadingState.accept(false)
+            self?.datasource.setItems(movies)
         }, onError: { [weak self] error in
             self?.loadingState.accept(false)
+            self?.datasource.setItems([])
         })
         .disposed(by: disposeBag)
     }
@@ -45,12 +50,15 @@ class MainPresenter {
     func transform(_ input: Input) -> Output? {
         input.viewWillAppear.drive(onNext: { [weak self] in
             self?.loadMoviesData(with: .popular)
-            }).disposed(by: disposeBag)
+        })
+        .disposed(by: disposeBag)
+
         input.itemSelected
         .drive(onNext: { [weak self] indexPath in
             //self?.wireframe?.toMovie(with: <#T##Movie#>)
         })
         .disposed(by: disposeBag)
+
         input.categorySelected
         .drive(onNext: { [weak self](cat) in
             self?.loadingState.accept(true)
@@ -58,6 +66,6 @@ class MainPresenter {
         })
         .disposed(by: disposeBag)
 
-        return Output(isInloadingState: loadingState.asDriver())
+        return Output(isInloadingState: loadingState.asDriver(), datasource: datasource)
     }
 }

@@ -33,6 +33,7 @@
 		EE553075235CFDA8000FE5ED /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553074235CFDA8000FE5ED /* NetworkManager.swift */; };
 		EE553078235D0408000FE5ED /* MoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE553077235D0408000FE5ED /* MoviesRepository.swift */; };
 		EE55307B235D11B7000FE5ED /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE55307A235D11B7000FE5ED /* List.swift */; };
+		EEECCB2E235D6BC700594018 /* MainDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEECCB2D235D6BC700594018 /* MainDatasource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		EE553077235D0408000FE5ED /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
 		EE553079235D0E08000FE5ED /* Practice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Practice.entitlements; sourceTree = "<group>"; };
 		EE55307A235D11B7000FE5ED /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		EEECCB2D235D6BC700594018 /* MainDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDatasource.swift; sourceTree = "<group>"; };
 		F121B9661CF31F0C843B6DFF /* Pods-PracticeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeTests.release.xcconfig"; path = "Target Support Files/Pods-PracticeTests/Pods-PracticeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,6 +254,7 @@
 		EE55303F235CC2B6000FE5ED /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EEECCB2C235D6BBA00594018 /* Datasource */,
 				EE553068235CE9FF000FE5ED /* Cells */,
 				EE553043235CC2E3000FE5ED /* MainViewController.swift */,
 			);
@@ -302,6 +305,14 @@
 				EE553077235D0408000FE5ED /* MoviesRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		EEECCB2C235D6BBA00594018 /* Datasource */ = {
+			isa = PBXGroup;
+			children = (
+				EEECCB2D235D6BC700594018 /* MainDatasource.swift */,
+			);
+			path = Datasource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -554,6 +565,7 @@
 				EE553058235CD623000FE5ED /* DatabaseEntity.swift in Sources */,
 				EE553042235CC2C8000FE5ED /* Practice.xcdatamodeld in Sources */,
 				EE553073235CF7FD000FE5ED /* UIViewController+Additions.swift in Sources */,
+				EEECCB2E235D6BC700594018 /* MainDatasource.swift in Sources */,
 				EE553052235CCBF2000FE5ED /* API.swift in Sources */,
 				EE55306F235CEDDD000FE5ED /* CollectionViewCell+Additions.swift in Sources */,
 				EE55306A235CEA0E000FE5ED /* MovieCollectionViewCell.swift in Sources */,

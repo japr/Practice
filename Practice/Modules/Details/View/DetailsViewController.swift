@@ -10,7 +10,11 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: UITableViewController {
+
+    @IBOutlet var additionalInfoLabel: UILabel!
+    @IBOutlet var movieCover: UIImageView!
+    @IBOutlet var descriptionLabel: UILabel!
 
     private let disposeBag = DisposeBag()
 
@@ -30,6 +34,9 @@ class DetailsViewController: UIViewController {
 
     private func bindPresenter() {
         let output = presenter?.transform(DetailsPresenter.Input())
+        output?.complementaryInfo.bind(to: additionalInfoLabel.rx.text).disposed(by: disposeBag)
         output?.title.bind(to: navigationItem.rx.title).disposed(by: disposeBag)
+        output?.movieDescription.bind(to: descriptionLabel.rx.text).disposed(by: disposeBag)
+        output?.movieCover.bind(to: movieCover.rx.image).disposed(by: disposeBag)
     }
 }

@@ -47,7 +47,7 @@ class NetworkConnection {
     init(environment: Environment = .dev) {
         self.environment = environment
         let configuration = URLSessionConfiguration.default
-        configuration.multipathServiceType = .handover
+        configuration.multipathServiceType = .none
         self.sessionManager = Alamofire.SessionManager(configuration: configuration)
     }
 }

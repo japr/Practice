@@ -7,23 +7,32 @@
 //
 
 import Alamofire
+import RxSwift
 
 enum NetworkError: Error {
     case badURL
 }
 
+enum NetworkStatus {
+    case notReachable
+    case reachable
+}
+
+typealias NetworkStatusChangesCallback = (NetworkStatus) -> Void
 typealias ResponseDataCallback = (Swift.Result<Data, Error>) -> Void
 
 protocol NetworkInferface {
     func cancelNetworkCall(request: Alamofire.DataRequest)
     func get(_ path: String, parameters: [String: Any]?, _ callback: @escaping ResponseDataCallback) -> Alamofire.DataRequest?
     func getImage(_ path: String, _ callback: @escaping ResponseDataCallback) -> Alamofire.DataRequest?
+    func subscribeToNetworkStatusChanges() -> Observable<NetworkStatus>
 }
 
 class NetworkConnection {
 
     private let environment: Environment
     private let sessionManager: Alamofire.SessionManager
+    private let reachabilityStatus = Alamofire.NetworkReachabilityManager()
     private var activeRequests: [Alamofire.DataRequest] = []
 
     static let `default` = NetworkConnection()
@@ -91,5 +100,22 @@ extension NetworkConnection: NetworkInferface {
         }
         activeRequests.append(request)
         return request
+    }
+
+    func subscribeToNetworkStatusChanges() -> Observable<NetworkStatus> {
+        return Observable.create ({ observer in
+                self.reachabilityStatus?.listener = { status in
+                    switch status {
+                    case .reachable(.ethernetOrWiFi), .reachable(.wwan):
+                        observer.onNext(.reachable)
+                    case .notReachable, .unknown:
+                        observer.onNext(.notReachable)
+                    }
+                }
+                self.reachabilityStatus?.startListening()
+            return Disposables.create {
+                self.reachabilityStatus?.stopListening()
+            }
+        })
     }
 }

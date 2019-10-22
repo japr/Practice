@@ -16,6 +16,7 @@ class DetailsPresenter {
     private let moviesRepository: MoviesRepositoryInterface
     private var movieVideos: [MovieVideo] = []
     private let movieCoverRelay = BehaviorRelay<UIImage?>(value: nil)
+    private let movieTrailerRelay = PublishRelay<URLRequest?>()
     private let networkManager: NetworkInferface
 
     var wireframe: DetailsWireframeInterface?
@@ -29,6 +30,7 @@ class DetailsPresenter {
         let title: BehaviorRelay<String>
         let movieCover: BehaviorRelay<UIImage?>
         let movieDescription: BehaviorRelay<String>
+        let trailerURL: PublishRelay<URLRequest?>
     }
 
     init(movie: Movie,
@@ -44,6 +46,12 @@ class DetailsPresenter {
         moviesRepository.retrieveMovieVideosWith(id: movie.id.description).asObservable()
         .subscribe(onNext: { [weak self](videosList) in
             self?.movieVideos = videosList
+            guard let video = videosList.first,
+                let youtubeURL = video.getYoutubeURL() else {
+                return
+            }
+            let request = URLRequest(url: youtubeURL)
+            self?.movieTrailerRelay.accept(request)
         })
         .disposed(by: disposeBag)
 
@@ -65,6 +73,7 @@ class DetailsPresenter {
         return Output(complementaryInfo: info,
                       title: titleRelay,
                       movieCover: movieCoverRelay,
-                      movieDescription: descriptionRelay)
+                      movieDescription: descriptionRelay,
+                      trailerURL: movieTrailerRelay)
     }
 }

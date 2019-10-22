@@ -16,6 +16,7 @@ struct Movie {
     let title: String
     let videoAvailable: Bool
     let votesAverage: Double
+    let movieVideos: [MovieVideo]?
 }
 
 extension Movie: Codable {
@@ -27,6 +28,7 @@ extension Movie: Codable {
         case title
         case videoAvailable = "video"
         case votesAverage = "vote_average"
+        case movieVideos
     }
 }
 

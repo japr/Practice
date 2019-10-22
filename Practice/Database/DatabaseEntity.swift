@@ -13,7 +13,6 @@ protocol DatabaseEntity {
     associatedtype DbType: NSFetchRequestResult
     static var entityName: String { get }
     static var primaryKeyAttributeName: String { get }
-    var id: Int64 { get }
     func map<T: Codable>() -> T?
 }
 

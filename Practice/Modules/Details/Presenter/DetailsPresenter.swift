@@ -36,6 +36,7 @@ class DetailsPresenter {
          networkManager: NetworkInferface = NetworkConnection.default) {
         self.movie = movie
         self.moviesRepository = moviesRepository
+        self.moviesRepository.subscribeToNetworkChanges()
         self.networkManager = networkManager
     }
 
@@ -59,7 +60,7 @@ class DetailsPresenter {
 
         let titleRelay = BehaviorRelay<String>(value: movie.title)
         let descriptionRelay = BehaviorRelay<String>(value: movie.overview)
-        let info = BehaviorRelay<String>(value: "Release date: \(movie.releaseDate) - Votes: \(movie.votesAverage)")
+        let info = BehaviorRelay<String>(value: "Release date: \(movie.releaseDate ?? "") - Votes: \(movie.votesAverage)")
 
         return Output(complementaryInfo: info,
                       title: titleRelay,

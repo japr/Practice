@@ -11,7 +11,7 @@
         <!--Main View Controller-->
         <scene sceneID="Hde-ud-OjO">
             <objects>
-                <viewController id="kgG-tk-b1N" customClass="MainViewController" customModule="Practice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="kgG-tk-b1N" customClass="MainViewController" customModule="Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="md2-CI-fDj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

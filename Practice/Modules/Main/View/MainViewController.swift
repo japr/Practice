@@ -13,6 +13,8 @@ class MainViewController: UIViewController {
     @IBOutlet var categoriesControl: UISegmentedControl!
     @IBOutlet var collectionView: UICollectionView!
 
+    var presenter: MainPresenter?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -8,6 +8,8 @@ target 'Practice' do
   # Pods for Practice
 
   pod 'Alamofire'
+  pod 'RxCocoa'
+  pod 'RxSwift'
 
   target 'PracticeTests' do
     inherit! :search_paths

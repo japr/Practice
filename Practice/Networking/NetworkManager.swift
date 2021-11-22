@@ -12,12 +12,18 @@ enum NetworkError: Error {
     case badURL
 }
 
-class NetworkConnection {
+typealias ResponseJSONCallback = (Swift.Result<Any, Error>) -> Void
 
-    typealias ResponseJSONCallback = (Swift.Result<Any, Error>) -> Void
+protocol NetworkInferface {
+    func cancelNetworkCall(request: Alamofire.DataRequest)
+    func get(_ path: String, parameters: [String: Any]?, _ callback: @escaping ResponseJSONCallback) -> Alamofire.DataRequest?
+}
+
+class NetworkConnection {
 
     private let environment: Environment
     private let sessionManager: Alamofire.SessionManager
+    private var activeRequests: [Alamofire.DataRequest] = []
 
     static let `default` = NetworkConnection()
 
@@ -34,18 +40,24 @@ class NetworkConnection {
         configuration.multipathServiceType = .handover
         self.sessionManager = Alamofire.SessionManager(configuration: configuration)
     }
+}
 
-    func get(_ path: String, parameters: [String: Any]? = nil, _ callback: @escaping ResponseJSONCallback) {
+extension NetworkConnection: NetworkInferface {
+    func cancelNetworkCall(request: Alamofire.DataRequest) {
+        request.cancel()
+    }
+
+    func get(_ path: String, parameters: [String: Any]? = nil, _ callback: @escaping ResponseJSONCallback) -> Alamofire.DataRequest? {
         guard let url = URL(string: environment.path + path) else {
             callback(.failure(NetworkError.badURL))
-            return
+            return nil
         }
-        sessionManager
+        let request = sessionManager
             .request(
                 url,
                 method: Alamofire.HTTPMethod.get,
                 parameters: parameters,
-                encoding: Alamofire.JSONEncoding.default,
+                encoding: Alamofire.URLEncoding.default,
                 headers: defaultHTTPHeaders
         ).responseJSON { (response) in
             switch response.result {
@@ -53,5 +65,7 @@ class NetworkConnection {
             case let .success(value): callback(.success(value))
             }
         }
+        activeRequests.append(request)
+        return request
     }
 }

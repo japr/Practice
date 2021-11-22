@@ -22,5 +22,7 @@ class MainViewController: UIViewController {
             MovieCollectionViewCell.self,
             forCellWithReuseIdentifier: MovieCollectionViewCell.identifier()
         )
+
+        presenter?.loadMoviesData()
     }
 }

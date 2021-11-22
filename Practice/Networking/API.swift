@@ -19,7 +19,7 @@ enum Environment {
 extension Environment: EnvironmentPath {
     var path: String {
         switch self {
-        case .dev:  return "https://api.themoviedb.org/4/list"
+        case .dev:  return "https://api.themoviedb.org/4"
         }
     }
 }

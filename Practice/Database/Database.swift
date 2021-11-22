@@ -23,7 +23,7 @@ class Database {
     }
 
     static func createPersistentContainer() -> NSPersistentContainer {
-        guard var storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "com.personal.Practice") else {
+        guard var storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.personal.Practice") else {
             fatalError()
         }
 

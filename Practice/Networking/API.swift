@@ -12,11 +12,11 @@ protocol EnvironmentPath {
     var path: String { get }
 }
 
-enum Environments {
+enum Environment {
     case dev
 }
 
-extension Environments: EnvironmentPath {
+extension Environment: EnvironmentPath {
     var path: String {
         switch self {
         case .dev:  return "https://api.themoviedb.org/4/list"

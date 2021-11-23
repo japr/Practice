@@ -44,20 +44,24 @@ class Database {
         return persistentContainer
     }
 
+    static func temporaryContext() -> NSManagedObjectContext {
+        let context = Database.default.persistentContainer.newBackgroundContext()
+        return context
+    }
+
     func reset() {
         persistentContainer.viewContext.reset()
         persistentContainer = Database.createPersistentContainer()
     }
 
-    func insertNewEntity<T: DatabaseEntity>(into context: NSManagedObjectContext) throws -> T {
+    func insertNewEntity<T: DatabaseEntity>(in context: NSManagedObjectContext) throws -> T {
         guard let nEntity = NSEntityDescription.insertNewObject(forEntityName: T.entityName, into: context) as? T else {
             throw NSError(domain: "com.practice.database", code: 1, userInfo: nil)
         }
         return nEntity
     }
 
-    func save<T: DatabaseEntity>(_ entities: [T], callback: DbTransactionCallback?) {
-        let context = persistentContainer.newBackgroundContext()
+    func save<T: DatabaseEntity>(_ entities: [T], in context: NSManagedObjectContext, callback: DbTransactionCallback?) {
         context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
         context.perform {
             do {

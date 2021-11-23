@@ -15,6 +15,15 @@ class CachedMovie: NSManagedObject {
     @NSManaged public var videoAvailable: Bool
     @NSManaged public var id: Int64
     @NSManaged public var posterPath: String?
+
+    func update(from movie: Movie) {
+        title = movie.title
+        voteAverage = movie.votesAverage
+        overview = movie.overview
+        videoAvailable = movie.videoAvailable
+        id = movie.id
+        posterPath = movie.posterPath
+    }
 }
 
 extension CachedMovie: DatabaseEntity {

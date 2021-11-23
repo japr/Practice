@@ -23,10 +23,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.register(
-            MovieCollectionViewCell.self,
-            forCellWithReuseIdentifier: MovieCollectionViewCell.identifier()
-        )
         let categorySelected = categoriesControl.rx.selectedSegmentIndex.asDriver()
         let itemSelected = collectionView.rx.itemSelected.asDriver()
         let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).map { _ in }.asDriver(onErrorJustReturn: ())
@@ -38,5 +34,11 @@ class MainViewController: UIViewController {
         })
         .disposed(by: disposeBag)
         output?.isInloadingState.drive(collectionView.rx.isHidden).disposed(by: disposeBag)
+        let itemsSet = output?.datasource.uiUpdateRequired.asDriver()
+        itemsSet?.drive(onNext: { [weak self] updateRequired in
+            self?.collectionView.reloadData()
+        })
+        .disposed(by: disposeBag)
+        collectionView.dataSource = output?.datasource
     }
 }

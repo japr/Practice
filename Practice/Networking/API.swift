@@ -19,7 +19,7 @@ enum Environment {
 extension Environment: EnvironmentPath {
     var path: String {
         switch self {
-        case .dev:  return "https://api.themoviedb.org/4"
+        case .dev:  return "https://api.themoviedb.org/3"
         }
     }
 }
@@ -30,12 +30,20 @@ protocol EndpointPath {
 
 enum Endpoints {
     case list(_ listId: Int)
+    case movie(_ category: MoviesCategory?)
 }
 
 extension Endpoints: EndpointPath {
     var path: String {
         switch self {
         case .list(let id): return "/list/\(id)"
+        case .movie(let cat):
+            switch cat {
+            case .popular: return "/movie/popular"
+            case .topRated: return "/movie/top_rated"
+            case .upcoming: return "/movie/upcoming"
+            default: return "/movie/"
+            }
         }
     }
 }

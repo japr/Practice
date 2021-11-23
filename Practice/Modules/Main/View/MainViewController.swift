@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class MainViewController: UIViewController {
 
     @IBOutlet var categoriesControl: UISegmentedControl!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+
+    private let disposeBag = DisposeBag()
 
     var presenter: MainPresenter?
 
@@ -22,7 +27,16 @@ class MainViewController: UIViewController {
             MovieCollectionViewCell.self,
             forCellWithReuseIdentifier: MovieCollectionViewCell.identifier()
         )
+        let categorySelected = categoriesControl.rx.selectedSegmentIndex.asDriver()
+        let itemSelected = collectionView.rx.itemSelected.asDriver()
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:))).map { _ in }.asDriver(onErrorJustReturn: ())
+        let input = MainPresenter.Input(categorySelected: categorySelected, itemSelected: itemSelected, viewWillAppear: viewWillAppear)
 
-        presenter?.loadMoviesData()
+        let output = presenter?.transform(input)
+        output?.isInloadingState.drive(onNext: { [weak self](loading) in
+            loading ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
+        })
+        .disposed(by: disposeBag)
+        output?.isInloadingState.drive(collectionView.rx.isHidden).disposed(by: disposeBag)
     }
 }

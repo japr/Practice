@@ -17,6 +17,7 @@ typealias ResponseDataCallback = (Swift.Result<Data, Error>) -> Void
 protocol NetworkInferface {
     func cancelNetworkCall(request: Alamofire.DataRequest)
     func get(_ path: String, parameters: [String: Any]?, _ callback: @escaping ResponseDataCallback) -> Alamofire.DataRequest?
+    func getImage(_ path: String, _ callback: @escaping ResponseDataCallback) -> Alamofire.DataRequest?
 }
 
 class NetworkConnection {
@@ -47,6 +48,7 @@ extension NetworkConnection: NetworkInferface {
         request.cancel()
     }
 
+    @discardableResult
     func get(_ path: String, parameters: [String: Any]? = nil, _ callback: @escaping ResponseDataCallback) -> Alamofire.DataRequest? {
         guard let url = URL(string: environment.path + path) else {
             callback(.failure(NetworkError.badURL))
@@ -57,6 +59,28 @@ extension NetworkConnection: NetworkInferface {
                 url,
                 method: Alamofire.HTTPMethod.get,
                 parameters: parameters,
+                encoding: Alamofire.URLEncoding.default,
+                headers: defaultHTTPHeaders
+        ).responseData { (response) in
+            switch response.result {
+            case let .failure(error): callback(.failure(error))
+            case let .success(value): callback(.success(value))
+            }
+        }
+        activeRequests.append(request)
+        return request
+    }
+
+    @discardableResult
+    func getImage(_ path: String, _ callback: @escaping ResponseDataCallback) -> Alamofire.DataRequest? {
+        guard let url = URL(string: Environment.images.path + path) else {
+            callback(.failure(NetworkError.badURL))
+            return nil
+        }
+        let request = sessionManager
+            .request(
+                url,
+                method: Alamofire.HTTPMethod.get,
                 encoding: Alamofire.URLEncoding.default,
                 headers: defaultHTTPHeaders
         ).responseData { (response) in

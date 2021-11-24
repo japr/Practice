@@ -26,6 +26,7 @@ class MainViewController: UIViewController {
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         }
+        collectionView.delegate = self
         let categorySelected = categoriesControl.rx.selectedSegmentIndex.asDriver()
         let itemSelected = collectionView.rx.itemSelected.asDriver()
         let input = MainPresenter.Input(categorySelected: categorySelected, itemSelected: itemSelected)
@@ -40,9 +41,16 @@ class MainViewController: UIViewController {
         let itemsSet = output?.datasource.uiUpdateRequired.asDriver()
         itemsSet?
         .drive(onNext: { [weak self] _ in
+            self?.collectionView.setContentOffset(.zero, animated: false)
             self?.collectionView.collectionViewLayout.invalidateLayout()
             self?.collectionView.reloadData()
         })
         .disposed(by: disposeBag)
+    }
+}
+
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 400.0)
     }
 }

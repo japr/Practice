@@ -92,6 +92,7 @@
 		EE553077235D0408000FE5ED /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
 		EE553079235D0E08000FE5ED /* Practice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Practice.entitlements; sourceTree = "<group>"; };
 		EE55307A235D11B7000FE5ED /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		EE7FD597235DEE830009E27C /* Practice1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Practice1.1.xcdatamodel; sourceTree = "<group>"; };
 		EEECCB2D235D6BC700594018 /* MainDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDatasource.swift; sourceTree = "<group>"; };
 		F121B9661CF31F0C843B6DFF /* Pods-PracticeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PracticeTests.release.xcconfig"; path = "Target Support Files/Pods-PracticeTests/Pods-PracticeTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -894,9 +895,10 @@
 		EE553040235CC2C8000FE5ED /* Practice.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				EE7FD597235DEE830009E27C /* Practice1.1.xcdatamodel */,
 				EE553041235CC2C8000FE5ED /* Practice.xcdatamodel */,
 			);
-			currentVersion = EE553041235CC2C8000FE5ED /* Practice.xcdatamodel */;
+			currentVersion = EE7FD597235DEE830009E27C /* Practice1.1.xcdatamodel */;
 			path = Practice.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

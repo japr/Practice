@@ -21,6 +21,10 @@ class MainDatasource<Element: Codable, Cell: MovieCollectionViewCell>: NSObject,
         uiUpdateRequired.accept(animated)
     }
 
+    func itemAt(indexPath: IndexPath) -> Element {
+        return items[indexPath.item]
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }

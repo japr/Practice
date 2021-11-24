@@ -49,7 +49,10 @@ class MainPresenter {
     func transform(_ input: Input) -> Output? {
         input.itemSelected
         .drive(onNext: { [weak self] indexPath in
-            //self?.wireframe?.toMovie(with: <#T##Movie#>)
+            guard let selectedMovie = self?.datasource.itemAt(indexPath: indexPath) else {
+                return
+            }
+            self?.wireframe?.toMovie(with: selectedMovie)
         })
         .disposed(by: disposeBag)
 

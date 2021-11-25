@@ -90,7 +90,6 @@
 		EE553072235CF7FD000FE5ED /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
 		EE553074235CFDA8000FE5ED /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EE553077235D0408000FE5ED /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
-		EE553079235D0E08000FE5ED /* Practice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Practice.entitlements; sourceTree = "<group>"; };
 		EE55307A235D11B7000FE5ED /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		EE7FD597235DEE830009E27C /* Practice1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Practice1.1.xcdatamodel; sourceTree = "<group>"; };
 		EEECCB2D235D6BC700594018 /* MainDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDatasource.swift; sourceTree = "<group>"; };
@@ -164,7 +163,6 @@
 		EE553005235CB641000FE5ED /* Practice */ = {
 			isa = PBXGroup;
 			children = (
-				EE553079235D0E08000FE5ED /* Practice.entitlements */,
 				EE553006235CB641000FE5ED /* AppDelegate.swift */,
 				EE553076235D03FE000FE5ED /* Repositories */,
 				EE55306D235CEDCB000FE5ED /* Utils */,
@@ -727,7 +725,7 @@
 			baseConfigurationReference = BD06089D280FF9E6608CCD04 /* Pods-Practice.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Practice/Practice.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CM94Q5EV49;
 				INFOPLIST_FILE = Practice/Info.plist;
@@ -735,8 +733,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.personal.Practice;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personal.jorgepractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -747,7 +746,7 @@
 			baseConfigurationReference = C543596474E4FAE346A4FF32 /* Pods-Practice.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Practice/Practice.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CM94Q5EV49;
 				INFOPLIST_FILE = Practice/Info.plist;
@@ -755,8 +754,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.personal.Practice;
+				PRODUCT_BUNDLE_IDENTIFIER = com.personal.jorgepractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

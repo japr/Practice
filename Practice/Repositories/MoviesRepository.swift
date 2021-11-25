@@ -12,6 +12,7 @@ import RxSwift
 protocol MoviesRepositoryInterface {
     func retrieveMovies(with category: MoviesCategory?) -> Single<[Movie]>
     func retrieveMovies(with title: String) -> Single<[Movie]>
+    func subscribeToNetworkChanges()
 }
 
 enum MoviesCategory: Int {
@@ -26,7 +27,9 @@ enum MoviesRepositoryErrors: Error {
 
 class MoviesRepository {
 
+    private var currentNetworkStatus: NetworkStatus = .reachable
     private let database: Database
+    private let disposeBag = DisposeBag()
     private let network: NetworkConnection
 
     init(database: Database = .default, network: NetworkConnection = .default) {
@@ -69,6 +72,11 @@ class MoviesRepository {
 extension MoviesRepository: MoviesRepositoryInterface {
     func retrieveMovies(with category: MoviesCategory?) -> Single<[Movie]> {
         return Single.create(subscribe: { observer in
+            guard self.currentNetworkStatus == .reachable else {
+                print("Should start local search")
+                observer(.success([]))
+                return Disposables.create()
+            }
             let endpoint = Endpoints.movie(category).path
             let request = self.network.get(endpoint, parameters: ["limit": 100]) { result in
                 switch result {
@@ -91,6 +99,11 @@ extension MoviesRepository: MoviesRepositoryInterface {
 
     func retrieveMovies(with title: String) -> Single<[Movie]> {
         return Single.create(subscribe: { observer in
+            guard self.currentNetworkStatus == .reachable else {
+                print("Should start local search")
+                observer(.success([]))
+                return Disposables.create()
+            }
             let endpoint = Endpoints.searchMovies.path
             let params: [String : Any] = ["limit": 100,
                                           "query": title]
@@ -111,5 +124,13 @@ extension MoviesRepository: MoviesRepositoryInterface {
                 self.network.cancelNetworkCall(request: req)
             }
         })
+    }
+
+    func subscribeToNetworkChanges() {
+        network.subscribeToNetworkStatusChanges()
+        .subscribe(onNext: { [weak self] newStatus in
+            self?.currentNetworkStatus = newStatus
+        })
+        .disposed(by: disposeBag)
     }
 }

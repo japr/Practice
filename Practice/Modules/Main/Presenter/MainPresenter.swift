@@ -34,6 +34,7 @@ class MainPresenter {
 
     init(repository: MoviesRepositoryInterface) {
         self.moviesRepository = repository
+        self.moviesRepository.subscribeToNetworkChanges()
         self.loadingState = BehaviorRelay<Bool>(value: false)
         self.datasource = MainDatasource()
     }

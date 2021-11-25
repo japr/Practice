@@ -10,6 +10,10 @@ import CoreData
 
 typealias DbTransactionCallback = (Error?) -> Void
 
+enum DatabaseErrors: Error {
+    case notKnownEntity
+}
+
 class Database {
 
     private var persistentContainer: NSPersistentContainer
@@ -48,6 +52,22 @@ class Database {
     static func temporaryContext() -> NSManagedObjectContext {
         let context = Database.default.persistentContainer.newBackgroundContext()
         return context
+    }
+
+    static func loadEntities<T: DatabaseEntity>(in context: NSManagedObjectContext, with predicate: NSPredicate) -> [T]? {
+        let request = NSFetchRequest<T.DbType>(entityName: T.entityName)
+        request.predicate = predicate
+        request.fetchLimit = 100
+        request.returnsObjectsAsFaults = false
+        do {
+            let results = try context.fetch(request)
+            guard let fetchedEntities = results as? [T] else {
+                return nil
+            }
+            return fetchedEntities
+        } catch {
+            return nil
+        }
     }
 
     func reset() {

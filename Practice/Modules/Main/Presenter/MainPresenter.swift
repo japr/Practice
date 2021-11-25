@@ -15,12 +15,16 @@ class MainPresenter {
     private let moviesRepository: MoviesRepositoryInterface
     private let loadingState: BehaviorRelay<Bool>
     private let datasource: MainDatasource<Movie, MovieCollectionViewCell>
+    private var currentCategory: MoviesCategory?
+    private var currentMovies: [Movie] = []
 
     var wireframe: MainWireframeInterface?
 
     struct Input {
+        let cancelSearch: Driver<Void>
         let categorySelected: Driver<Int>
         let itemSelected: Driver<IndexPath>
+        let searchText: Driver<String?>
     }
 
     struct Output {
@@ -39,9 +43,20 @@ class MainPresenter {
         .subscribe(onNext: { [weak self] movies in
             self?.loadingState.accept(false)
             self?.datasource.setItems(movies, animated: true)
+            self?.currentMovies = movies
         }, onError: { [weak self] error in
             self?.loadingState.accept(false)
             self?.datasource.setItems([])
+        })
+        .disposed(by: disposeBag)
+    }
+
+    private func loadMoviesData(with title: String, and category: MoviesCategory) {
+        moviesRepository.retrieveMovies(with: title).asObservable()
+        .flatMapLatest { Observable.just($0) }
+        .observeOn(MainScheduler.instance)
+        .subscribe(onNext: { [weak self] list in
+            self?.datasource.setItems(list, animated: true)
         })
         .disposed(by: disposeBag)
     }
@@ -59,7 +74,23 @@ class MainPresenter {
         input.categorySelected
         .drive(onNext: { [weak self](cat) in
             self?.loadingState.accept(true)
+            self?.currentCategory = MoviesCategory(rawValue: cat)
             self?.loadMoviesData(with: MoviesCategory(rawValue: cat))
+        })
+        .disposed(by: disposeBag)
+
+        input.searchText
+        .filter { ($0?.count ?? 0) > 3 }
+        .throttle(RxTimeInterval.milliseconds(300))
+        .drive(onNext: { [weak self] text in
+            guard let title = text, !title.isEmpty else { return }
+            self?.loadMoviesData(with: title, and: self?.currentCategory ?? .popular)
+        })
+        .disposed(by: disposeBag)
+
+        input.cancelSearch
+        .drive(onNext: { [weak self] in
+            self?.datasource.setItems(self?.currentMovies ?? [], animated: true)
         })
         .disposed(by: disposeBag)
 

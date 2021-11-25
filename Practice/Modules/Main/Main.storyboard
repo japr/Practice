@@ -21,7 +21,7 @@
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LbP-RV-Uxq">
-                                <rect key="frame" x="83" y="30" width="248" height="31"/>
+                                <rect key="frame" x="83" y="10" width="248" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="4qO-1k-6ou"/>
                                 </constraints>
@@ -32,7 +32,7 @@
                                 </segments>
                             </segmentedControl>
                             <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iXm-g6-W3B">
-                                <rect key="frame" x="0.0" y="70" width="414" height="704"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="724"/>
                                 <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="KUY-fX-Sdi">
                                     <size key="itemSize" width="414" height="200"/>
@@ -110,7 +110,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="LbP-RV-Uxq" firstAttribute="top" secondItem="3hx-Yp-CHC" secondAttribute="top" constant="30" id="2Jq-yE-1Xd"/>
+                            <constraint firstItem="LbP-RV-Uxq" firstAttribute="top" secondItem="3hx-Yp-CHC" secondAttribute="top" constant="10" id="2Jq-yE-1Xd"/>
                             <constraint firstItem="LbP-RV-Uxq" firstAttribute="centerX" secondItem="md2-CI-fDj" secondAttribute="centerX" id="6Ma-HJ-4sk"/>
                             <constraint firstItem="5eu-ey-eRe" firstAttribute="centerX" secondItem="md2-CI-fDj" secondAttribute="centerX" id="AOi-jV-sdm"/>
                             <constraint firstItem="3hx-Yp-CHC" firstAttribute="bottom" secondItem="iXm-g6-W3B" secondAttribute="bottom" id="KXE-M4-V2g"/>
@@ -121,7 +121,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3hx-Yp-CHC"/>
                     </view>
+                    <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="5eu-ey-eRe" id="o3U-BM-m8C"/>
                         <outlet property="categoriesControl" destination="LbP-RV-Uxq" id="gtz-ED-AoM"/>

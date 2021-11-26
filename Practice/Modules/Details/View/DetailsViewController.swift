@@ -29,6 +29,7 @@ class DetailsViewController: UIViewController {
     }
 
     private func bindPresenter() {
-
+        let output = presenter?.transform(DetailsPresenter.Input())
+        output?.title.bind(to: navigationItem.rx.title).disposed(by: disposeBag)
     }
 }

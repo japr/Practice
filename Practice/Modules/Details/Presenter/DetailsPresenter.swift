@@ -17,7 +17,20 @@ class DetailsPresenter {
 
     var wireframe: DetailsWireframeInterface?
 
+    struct Input {
+
+    }
+
+    struct Output {
+        let title: BehaviorRelay<String>
+    }
+
     init(movie: Movie) {
         self.movie = movie
+    }
+
+    func transform(_ input: Input) -> Output {
+        let titleRelay = BehaviorRelay<String>(value: movie.title)
+        return Output(title: titleRelay)
     }
 }

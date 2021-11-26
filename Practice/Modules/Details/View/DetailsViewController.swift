@@ -18,7 +18,14 @@ class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBackButton()
         bindPresenter()
+    }
+
+    private func setupBackButton() {
+        let backButton = UIBarButtonItem()
+        backButton.title = "Search"
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
 
     private func bindPresenter() {

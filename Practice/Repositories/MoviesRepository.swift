@@ -12,6 +12,7 @@ import RxSwift
 protocol MoviesRepositoryInterface {
     func retrieveMovies(with category: MoviesCategory?) -> Single<[Movie]>
     func retrieveMovies(with title: String) -> Single<[Movie]>
+    func retrieveMovieVideos(with id: String) -> Single<[MovieVideo]>
     func subscribeToNetworkChanges()
 }
 
@@ -129,6 +130,29 @@ extension MoviesRepository: MoviesRepositoryInterface {
                         return
                     }
                     observer(.success(list.results))
+                }
+            }
+            return Disposables.create {
+                guard let req = request else { return }
+                self.network.cancelNetworkCall(request: req)
+            }
+        })
+    }
+
+    func retrieveMovieVideos(with id: String) -> Single<[MovieVideo]> {
+        return Single.create(subscribe: { observer in
+            let endpoint = Endpoints.movieVideos(id).path
+            let request = self.network.get(endpoint) { result in
+                switch result {
+                case let .failure(error):
+                    observer(.error(error))
+                case let .success(data):
+                    do {
+                        let videosList = try JSONDecoder().decode(MovieVideoList.self, from: data)
+                        observer(.success(videosList.videos))
+                    } catch let error {
+                        observer(.error(error))
+                    }
                 }
             }
             return Disposables.create {

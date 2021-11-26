@@ -16,6 +16,7 @@ class CachedMovie: NSManagedObject {
     @NSManaged public var videoAvailable: Bool
     @NSManaged public var id: Int64
     @NSManaged public var posterPath: String?
+    @NSManaged public var releaseDate: String?
 
     func update(from movie: Movie, and cat: MoviesCategory) {
         title = movie.title
@@ -25,6 +26,7 @@ class CachedMovie: NSManagedObject {
         id = movie.id
         posterPath = movie.posterPath
         category = Int32(cat.rawValue)
+        releaseDate = movie.releaseDate
     }
 }
 
@@ -39,7 +41,7 @@ extension CachedMovie: DatabaseEntity {
         let movie = Movie(id: id,
                           overview: overview ?? "",
                           posterPath: posterPath ?? "",
-                          releaseDate: "",
+                          releaseDate: releaseDate ?? "",
                           title: title ?? "",
                           videoAvailable: videoAvailable,
                           votesAverage: voteAverage)

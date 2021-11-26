@@ -28,9 +28,10 @@ class MainViewController: UIViewController {
         setupSearchController()
 
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+            let size = CGSize(width: UIScreen.main.bounds.width, height: 500.0)
+            flowLayout.estimatedItemSize = size
+            flowLayout.itemSize = UICollectionViewFlowLayout.automaticSize
         }
-        collectionView.delegate = self
     }
 
     private func bindPresenter() {
@@ -67,11 +68,5 @@ class MainViewController: UIViewController {
         searchController.searchBar.placeholder = "Search Movies"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-    }
-}
-
-extension MainViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 400.0)
     }
 }

@@ -33,7 +33,7 @@ extension MainWireframe: MainWireframeInterface {
         let detailsStoryboard = UIStoryboard(storyboardName: .details)
         let wireframe = DetailsWireframe(navigationController: navigationController,
                                          storyBoard: detailsStoryboard)
-        let presenter = DetailsPresenter(movie: movie)
+        let presenter = DetailsPresenter(movie: movie, moviesRepository: MoviesRepository())
         presenter.wireframe = wireframe
 
         let controller: DetailsViewController = detailsStoryboard.instantiateViewController()

@@ -39,6 +39,7 @@ extension CachedMovie: DatabaseEntity {
         let movie = Movie(id: id,
                           overview: overview ?? "",
                           posterPath: posterPath ?? "",
+                          releaseDate: "",
                           title: title ?? "",
                           videoAvailable: videoAvailable,
                           votesAverage: voteAverage)

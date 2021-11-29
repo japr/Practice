@@ -34,6 +34,11 @@ class MainViewController: UIViewController {
         }
     }
 
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+
     private func bindPresenter() {
         let categorySelected = categoriesControl.rx.selectedSegmentIndex.asDriver()
         let itemSelected = collectionView.rx.itemSelected.asDriver()

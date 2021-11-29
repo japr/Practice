@@ -29,12 +29,12 @@ enum MoviesRepositoryErrors: Error {
 
 class MoviesRepository {
 
-    private var currentNetworkStatus: NetworkStatus = .reachable
+    var currentNetworkStatus: NetworkStatus = .reachable
     private let database: Database
     private let disposeBag = DisposeBag()
-    private let network: NetworkConnection
+    private let network: NetworkInferface
 
-    init(database: Database = .default, network: NetworkConnection = .default) {
+    init(database: Database = .default, network: NetworkInferface = NetworkConnection.default) {
         self.database = database
         self.network = network
     }
@@ -196,7 +196,7 @@ extension MoviesRepository: MoviesRepositoryInterface {
                 return Disposables.create()
             }
             let endpoint = Endpoints.movieVideos(id).path
-            let request = self.network.get(endpoint) { result in
+            let request = self.network.get(endpoint, parameters: nil) { result in
                 switch result {
                 case let .failure(error):
                     observer(.error(error))

@@ -9,12 +9,14 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import WebKit
 
 class DetailsViewController: UITableViewController {
 
     @IBOutlet var additionalInfoLabel: UILabel!
     @IBOutlet var movieCover: UIImageView!
     @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var webView: WKWebView!
 
     private let disposeBag = DisposeBag()
 
@@ -38,5 +40,12 @@ class DetailsViewController: UITableViewController {
         output?.title.bind(to: navigationItem.rx.title).disposed(by: disposeBag)
         output?.movieDescription.bind(to: descriptionLabel.rx.text).disposed(by: disposeBag)
         output?.movieCover.bind(to: movieCover.rx.image).disposed(by: disposeBag)
+        output?.trailerURL
+        .observeOn(MainScheduler.instance)
+        .subscribe(onNext: { [weak self] request in
+            guard let validReq = request else { return }
+            self?.webView.load(validReq)
+        })
+        .disposed(by: disposeBag)
     }
 }

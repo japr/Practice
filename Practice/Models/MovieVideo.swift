@@ -16,14 +16,14 @@ struct MovieVideo {
     let type: String
 
     func getYoutubeURL() -> URL? {
-        guard site == "Youtube" else { return nil }
-        let fullPath = "https://www.youtube.com/watch?v=\(key)"
+        guard site.lowercased() == "youtube" else { return nil }
+        let fullPath = "https://www.youtube.com/embed/\(key)"
         return URL(string: fullPath)
     }
 
     func getVimeoURL() -> URL? {
-        guard site == "Vimeo" else { return nil }
-        let fullPath = "https://vimeo.com/\(key)"
+        guard site.lowercased() == "vimeo" else { return nil }
+        let fullPath = "https://player.vimeo.com/video/\(key)"
         return URL(string: fullPath)
     }
 }

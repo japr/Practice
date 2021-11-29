@@ -85,6 +85,43 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="296" id="5wL-hq-Nke">
+                                        <rect key="frame" x="0.0" y="380" width="414" height="296"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5wL-hq-Nke" id="H9Q-mL-ATa">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="296"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <wkWebView contentMode="scaleToFill" customUserAgent="iOS App/Practice v1.0" translatesAutoresizingMaskIntoConstraints="NO" id="uug-Ta-fgK">
+                                                    <rect key="frame" x="0.0" y="44" width="414" height="252"/>
+                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <wkWebViewConfiguration key="configuration" allowsInlineMediaPlayback="YES" applicationNameForUserAgent="Practice">
+                                                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" audio="YES" video="YES"/>
+                                                        <wkPreferences key="preferences"/>
+                                                    </wkWebViewConfiguration>
+                                                </wkWebView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trailer" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="po4-Is-9aa">
+                                                    <rect key="frame" x="20" y="10" width="374" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="bwJ-yq-e5o"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="uug-Ta-fgK" secondAttribute="bottom" id="BEB-Me-brL"/>
+                                                <constraint firstItem="po4-Is-9aa" firstAttribute="top" secondItem="H9Q-mL-ATa" secondAttribute="top" constant="10" id="Pkh-Jk-8DL"/>
+                                                <constraint firstAttribute="trailing" secondItem="po4-Is-9aa" secondAttribute="trailing" constant="20" id="bIv-cE-YWP"/>
+                                                <constraint firstItem="po4-Is-9aa" firstAttribute="leading" secondItem="H9Q-mL-ATa" secondAttribute="leading" constant="20" id="j3a-MB-Erh"/>
+                                                <constraint firstItem="uug-Ta-fgK" firstAttribute="leading" secondItem="H9Q-mL-ATa" secondAttribute="leading" id="jxs-pO-tgw"/>
+                                                <constraint firstAttribute="trailing" secondItem="uug-Ta-fgK" secondAttribute="trailing" id="xt2-eg-rv1"/>
+                                                <constraint firstItem="uug-Ta-fgK" firstAttribute="top" secondItem="po4-Is-9aa" secondAttribute="bottom" constant="10" id="zYL-sP-JLg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -97,6 +134,7 @@
                         <outlet property="additionalInfoLabel" destination="RUV-bC-4fm" id="UYZ-Vq-lGm"/>
                         <outlet property="descriptionLabel" destination="jd9-79-qDK" id="TY8-cF-fBP"/>
                         <outlet property="movieCover" destination="vOQ-nb-QYT" id="Grl-pl-05V"/>
+                        <outlet property="webView" destination="uug-Ta-fgK" id="Cc8-An-Hph"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z76-11-C3x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

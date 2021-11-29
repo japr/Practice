@@ -53,13 +53,20 @@ extension CachedMovie: DatabaseEntity {
     }
 
     func map<T: Codable>() -> T? {
+
+        let videos: [MovieVideo]? = movieVideos?.compactMap {
+            let cachedVideo: MovieVideo? = ($0 as? CachedMovieVideo)?.map()
+            return cachedVideo
+        }
+
         let movie = Movie(id: id,
                           overview: overview ?? "",
                           posterPath: posterPath ?? "",
                           releaseDate: releaseDate ?? "",
                           title: title ?? "",
                           videoAvailable: videoAvailable,
-                          votesAverage: voteAverage)
+                          votesAverage: voteAverage,
+                          movieVideos: videos)
 
         guard let generic = movie as? T else {
             return nil
